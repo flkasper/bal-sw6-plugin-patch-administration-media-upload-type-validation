@@ -1,4 +1,5 @@
 const {Component} = Shopware;
+const {fileReader} = Shopware.Utils
 
 Component.override('sw-media-upload-v2', {
     methods: {
