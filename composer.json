@@ -1,0 +1,43 @@
+{
+    "name": "bitsandlikes-shopware/sw6-plugin-patch-administration-media-upload-validation",
+    "description": "Administration Patch: Media upload type validation",
+    "version": "1.0.0",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bits & likes GmbH (Florian Kasper)",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "shopware/core": ">=6.4.14"
+    },
+    "extra": {
+        "shopware-plugin-class": "BAL\\Plugin\\PatchAdministrationMediaUploadTypeValidation\\BalPatchAdministrationMediaUploadTypeValidation",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "bits & likes GmbH",
+        "label": {
+            "en-GB": "Administration Patch: Media upload type validation",
+            "de-DE": "Administration Patch: Validierung des Medien-Upload-Typs"
+        },
+        "description": {
+            "en-GB": "Temporary patch for media upload type validation until pull request https:github.comshopwareplatformpull2713 is applied",
+            "de-DE": "Temporärer Patch für die Validierung des Medien-Upload-Typs bis Änderungs-Anfrage https://github.com/shopware/platform/pull/2713 übernommen wurde"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://bitsandlikes.de",
+            "en-GB": "https://bitsandlikes.de"
+        },
+        "supportLink": {
+            "de-DE": "https://bitsandlikes.de",
+            "en-GB": "https://bitsandlikes.de"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "BAL\\Plugin\\PatchAdministrationMediaUploadTypeValidation\\": "src/"
+        }
+    }
+}
