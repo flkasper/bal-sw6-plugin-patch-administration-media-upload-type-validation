@@ -8,38 +8,31 @@ Component.override('sw-media-upload-v2', {
                 return true;
             }
 
-            const fileTypes = this.fileAccept.split(',');
+            const fileTypes = this.fileAccept.replaceAll(' ', '').split(',');
 
-            // eslint-disable-next-line no-restricted-syntax
-            for (const fileType of fileTypes) {
+            this.isCorrectFileType = fileTypes.some(fileType => {
                 const currentFileType = file?.type || file?.mimeType || '';
 
                 if (fileType.substring(0, 1) === '.' || currentFileType.length === 0) {
                     const fileInfo = fileReader.getNameAndExtensionFromFile(file);
                     const fileExtension = `.${fileInfo?.extension || ''}`;
 
-                    this.isCorrectFileType = (fileType === fileExtension);
+                    return (fileType === fileExtension);
                 } else {
                     const currentFileTypeParts = currentFileType.split('/');
                     const fileAcceptType = fileType.split('/');
 
                     if (fileAcceptType[0] !== currentFileTypeParts[0]) {
-                        this.isCorrectFileType = false;
-                        // eslint-disable-next-line no-continue
-                        continue;
+                        return false;
                     }
 
                     if (fileAcceptType[1] === '*') {
-                        this.isCorrectFileType = true;
-                        break;
+                        return true;
                     }
 
-                    this.isCorrectFileType = fileAcceptType[1] === currentFileTypeParts[1];
+                    return fileAcceptType[1] === currentFileTypeParts[1];
                 }
-                if (this.isCorrectFileType) {
-                    break;
-                }
-            }
+            });
 
             if (this.isCorrectFileType) {
                 return true;
